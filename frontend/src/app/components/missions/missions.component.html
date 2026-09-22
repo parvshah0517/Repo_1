@@ -1,0 +1,18 @@
+<h2>Mission Timeline</h2>
+
+<p *ngIf="loading" class="status">Retrieving mission logs…</p>
+<p *ngIf="error" class="status error">
+  Couldn't reach Mission Control API. Make sure the Node.js backend is running on port 3000.
+</p>
+
+<div class="timeline" *ngIf="!loading && !error">
+  <div class="entry card" *ngFor="let mission of missions">
+    <div class="year">{{ mission.year }}</div>
+    <div class="body">
+      <h3>{{ mission.name }}</h3>
+      <span class="badge">{{ mission.agency }}</span>
+      <span class="badge status-badge">{{ mission.status }}</span>
+      <p>{{ mission.description }}</p>
+    </div>
+  </div>
+</div>

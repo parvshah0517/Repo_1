@@ -1,0 +1,25 @@
+<div class="starfield">
+  <div class="stars stars-small"></div>
+  <div class="stars stars-medium"></div>
+  <div class="stars stars-large"></div>
+</div>
+
+<header class="topbar">
+  <a class="brand" routerLink="/">
+    <span class="brand-icon">🛰️</span>
+    <span class="brand-text">SPACE<strong>EXPLORER</strong></span>
+  </a>
+  <nav class="nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/planets" routerLinkActive="active">Planets</a>
+    <a routerLink="/missions" routerLinkActive="active">Missions</a>
+  </nav>
+</header>
+
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <p>Built with Angular &amp; Node.js — transmitting from Mission Control 🚀</p>
+</footer>

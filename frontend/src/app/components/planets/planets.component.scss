@@ -1,0 +1,39 @@
+h2 { margin-bottom: 1.5rem; }
+
+.status {
+  color: var(--text-secondary);
+  &.error { color: var(--accent-orange); }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.planet {
+  cursor: pointer;
+  text-align: center;
+
+  .planet-orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 0.75rem;
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  h3 { margin: 0.25rem 0; }
+
+  .details {
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-glow);
+    padding-top: 0.75rem;
+
+    p { margin: 0.35rem 0; }
+    .fact { font-style: italic; color: var(--accent-blue); }
+  }
+}

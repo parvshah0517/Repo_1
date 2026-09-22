@@ -1,0 +1,21 @@
+<h2>Planets of the Solar System</h2>
+
+<p *ngIf="loading" class="status">Scanning the solar system…</p>
+<p *ngIf="error" class="status error">
+  Couldn't reach Mission Control API. Make sure the Node.js backend is running on port 3000.
+</p>
+
+<div class="grid" *ngIf="!loading && !error">
+  <div class="card planet" *ngFor="let planet of planets" (click)="select(planet)">
+    <div class="planet-orb" [style.background]="planet.color"></div>
+    <h3>{{ planet.name }}</h3>
+    <span class="badge">{{ planet.type }}</span>
+
+    <div class="details" *ngIf="selected?.id === planet.id">
+      <p><strong>Diameter:</strong> {{ planet.diameterKm | number }} km</p>
+      <p><strong>Distance from Sun:</strong> {{ planet.distanceFromSunAU }} AU</p>
+      <p><strong>Moons:</strong> {{ planet.moons }}</p>
+      <p class="fact">{{ planet.fact }}</p>
+    </div>
+  </div>
+</div>

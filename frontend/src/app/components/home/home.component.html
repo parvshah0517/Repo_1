@@ -1,0 +1,27 @@
+<section class="hero">
+  <p class="badge" *ngIf="apiOnline">🟢 API connected</p>
+  <h1>Explore the <span class="glow">Cosmos</span></h1>
+  <p class="subtitle">
+    A mission-control style dashboard for the solar system — built with an
+    Angular frontend and a Node.js/Express API.
+  </p>
+  <div class="cta-row">
+    <a routerLink="/planets" class="btn btn-primary">Browse Planets</a>
+    <a routerLink="/missions" class="btn btn-secondary">View Missions</a>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="card stat">
+    <span class="stat-number">{{ planetCount || 8 }}</span>
+    <span class="stat-label">Planets Tracked</span>
+  </div>
+  <div class="card stat">
+    <span class="stat-number">{{ missionCount || 6 }}</span>
+    <span class="stat-label">Missions Logged</span>
+  </div>
+  <div class="card stat">
+    <span class="stat-number">∞</span>
+    <span class="stat-label">Curiosity</span>
+  </div>
+</section>
