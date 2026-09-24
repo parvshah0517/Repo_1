@@ -10,33 +10,34 @@ phases:
       nodejs: 20
     commands:
       - echo "Installing backend dependencies..."
-      - cd backend && npm ci
-      - cd ..
+      - cd $CODEBUILD_SRC_DIR/backend
+      - npm ci
       - echo "Installing frontend dependencies..."
-      - cd frontend && npm ci
-      - cd ..
+      - cd $CODEBUILD_SRC_DIR/frontend
+      - npm ci
 
   pre_build:
     commands:
       - echo "Build started on `date`"
+      - cd $CODEBUILD_SRC_DIR
       - node -v
       - npm -v
 
   build:
     commands:
       - echo "Building Angular frontend..."
-      - cd frontend
+      - cd $CODEBUILD_SRC_DIR/frontend
       - npm run build -- --configuration production
-      - cd ..
       - echo "Copying frontend build output into backend..."
-      - mkdir -p backend/frontend/dist/space-site
-      - cp -r frontend/dist/space-site/browser backend/frontend/dist/space-site/browser
+      - mkdir -p $CODEBUILD_SRC_DIR/backend/frontend/dist/space-site
+      - cp -r $CODEBUILD_SRC_DIR/frontend/dist/space-site/browser $CODEBUILD_SRC_DIR/backend/frontend/dist/space-site/browser
 
   post_build:
     commands:
       - echo "Build completed on `date`"
       - echo "Pruning backend to production dependencies only..."
-      - cd backend && npm prune --omit=dev && cd ..
+      - cd $CODEBUILD_SRC_DIR/backend
+      - npm prune --omit=dev
 
 artifacts:
   base-directory: backend
