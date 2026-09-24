@@ -12,9 +12,10 @@ phases:
       - echo "Installing backend dependencies..."
       - cd $CODEBUILD_SRC_DIR/backend
       - npm ci
+
       - echo "Installing frontend dependencies..."
       - cd $CODEBUILD_SRC_DIR/frontend
-      - npm ci
+      - npm ci --include=dev
 
   pre_build:
     commands:
@@ -28,6 +29,7 @@ phases:
       - echo "Building Angular frontend..."
       - cd $CODEBUILD_SRC_DIR/frontend
       - npm run build -- --configuration production
+
       - echo "Copying frontend build output into backend..."
       - mkdir -p $CODEBUILD_SRC_DIR/backend/frontend/dist/space-site
       - cp -r $CODEBUILD_SRC_DIR/frontend/dist/space-site/browser $CODEBUILD_SRC_DIR/backend/frontend/dist/space-site/browser
