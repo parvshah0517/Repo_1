@@ -26,7 +26,7 @@ phases:
     commands:
       - echo "Building Angular frontend..."
       - cd frontend
-      - npx ng build --configuration production
+      - npm run build -- --configuration production
       - cd ..
       - echo "Copying frontend build output into backend..."
       - mkdir -p backend/frontend/dist/space-site
